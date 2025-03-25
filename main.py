@@ -46,17 +46,18 @@ def on_click(row, col):
     global current_player, player_x_wins, player_o_wins
 
     if buttons[row][col]['text'] != "":
-        winsound.Beep(500, 100)  # Воспроизводим звук ошибки
+        winsound.Beep(400, 100)  # Воспроизводим звук ошибки
         return
 
     buttons[row][col]['text'] = current_player
     winsound.Beep(1000, 100) # Воспроизводим звук щелчка
 
     if check_winner():
-        winsound.Beep(1500, 300)  # Воспроизводим звук победы
+        winsound.Beep(1200, 300)
         update_score(current_player)
         if player_x_wins == raund_count or player_o_wins == raund_count:
             messagebox.showinfo("Игра", f"Игрок {current_player} победил, со счётом {player_x_wins}:{player_o_wins} !")
+            winsound.Beep(1500, 600)  # Воспроизводим звук победы
             reset_all()
         else:
             messagebox.showinfo("Раунд", f"Игрок {current_player} победил!")
